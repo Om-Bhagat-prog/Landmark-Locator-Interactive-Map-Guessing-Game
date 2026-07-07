@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset = "UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        
+        <title>Landmark Locator</title>
+
+        <!-- Leaflet CSS-->
+         <link
+            rel = "stylesheet"
+            href = "https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        />
+
+        <link rel = "stylesheet" href = "style.css" />
+    </head>
+    <body>
+
+        <header class = "app-header">
+            <h1>Landmark Locator</h1>
+            <p>Click on the map and guess where the landmark is located.</p>
+        </header>
+
+        <main class = "game-container">
+            <section class = "game-panel">
+                <h2>Round 1</h2>
+                <p class = "target-label">Find:</p>
+                <p id = "targetPlace">Eiffel Tower, France</p>
+
+                <button id = "submitGuessBtn">Submit Guess</button>
+                <button id = "nextRoundBtn">Next Round</button>
+
+                <p id = "resultMessage">Make your first guess by clicking on the map.</p>
+            </section>
+
+            <section id = "map"></section>
+        </main>
+
+        <!--Leaflet JS-->
+        <script
+            src = "https://unpkg.com/leaflet@1.9.4/dist/leaflet.js">
+        </script>
+
+        <script src = "script.js"></script>
+    </body>
+</html>
+
