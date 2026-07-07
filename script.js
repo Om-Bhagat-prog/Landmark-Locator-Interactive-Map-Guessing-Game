@@ -8,7 +8,9 @@ const places = [
     {
     name: "Eiffel Tower, France",
     lat: 48.8584,
-    lng: 2.2945
+    lng: 2.2945,
+    hint: "This landmark is in Paris and is made of iron.",
+    fact: "The Eiffel Tower was completed in 1889 and is one of the most visited landmarks in the world."
     },
     {
         name: "Taj Mahal, India",
@@ -39,13 +41,17 @@ let correctMarker = null;
 let resultLine = null;
 let userGuess = null;
 let roundSubmitted = false;
+let hintUsed = false;
 
 const roundTitle = document.getElementById("roundTitle");
 const targetPlace = document.getElementById("targetPlace");
 const scoreDisplay = document.getElementById("scoreDisplay");
 const resultMessage = document.getElementById("resultMessage");
+const factMessage = document.getElementById("factMessage");
+const hintBtn = document.getElementById("hintBtn");
 const submitGuessBtn = document.getElementById("submitGuessBtn");
 const nextRoundBtn = document.getElementById("nextRoundBtn");
+const restartGameBtn = document.getElementById("restartGameBtn");
 
 displayCurrentRound();
 
@@ -103,7 +109,7 @@ submitGuessBtn.addEventListener("click", function() {
         correctPlace.lng
     );
 
-    const score = calculateScore(distanceKm);
+    let score = calculateScore(distanceKm);
 
     totalScore = totalScore + score;
     scoreDisplay.textContent =  `Total Score: ${totalScore}`;
@@ -168,9 +174,15 @@ function displayCurrentRound() {
     targetPlace.textContent = currentPlace.name;
     scoreDisplay.textContent = `Total Score: ${totalScore}`;
     resultMessage.textContent = "Make your guess by clicking on the map.";
+    factMessage.textContent = "";
 
     userGuess = null;
     roundSubmitted = false;
+    hintUsed = false;
+
+    hintBtn.disabled = false;
+    submitGuessBtn.disabled = false;
+    nextRoundBtn.disabled = false;
 }
 
 function resetMapMarkers() {
@@ -195,8 +207,51 @@ function endGame() {
     roundTitle.textContent = "Game Over";
     targetPlace.textContent = "All landmarks completed.";
     resultMessage.textContent = 
-        `Final Score: ${totalScore} / ${places.length * 1000}`;
+    `Final Score: ${totalScore} / ${places.length * 1000}`;
+    factMessage.textContent = "Click Restart Game to play again.";
 
-        submitGuessBtn.disabled = true;
-        nextRoundBtn.disabled = true;
+    hintBtn.disabled = true;
+    submitGuessBtn.disabled = true;
+    nextRoundBtn.disabled = true;
+}
+
+hintBtn.addEventListener("click", function () {
+    if (roundSubmitted === true) {
+        resultMessage.textContent = "This round is already submitted. Move to the next round.";
+        return;
+    }
+
+    const currentPlace = places[currentRoundIndex];
+
+    resultMessage.textContent = `Hint: ${currentPlace.hint}`;
+    hintUsed = true;
+    hintBtn.disabled = true;
+});
+
+if (hintUsed === true) {
+    score = Math.max(0, score - 100);
+}
+
+if (hintUsed === true) {
+    resultMessage.textContent += " Hint penalty: -100 points.";
+}
+
+factMessage.textContent = `Facts: ${correctPlace.fact}`;
+
+hintBtn.disabled = true;
+
+restartGameBtn.addEventListener("click", function () {
+    restartGameBtn();
+});
+
+function restartGame() {
+    resetMapMarkers();
+
+    currentRoundIndex = 0;
+    totalScore = 0;
+    userGuess = null;
+    roundSubmitted = false;
+    hintUsed = false;
+
+    displayCurrentRound();
 }

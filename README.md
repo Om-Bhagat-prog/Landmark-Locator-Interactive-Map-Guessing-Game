@@ -6,11 +6,11 @@ Landmark Locator is an interactive map-based travel game where users guess the l
 
 This project uses an interactive map to challenge users to find famous landmarks. The player clicks on the map to make a guess, submits the guess, and then sees the correct location. The game calculates the distance between the player's guess and the real landmark location, then gives a score based on accuracy.
 
-## First Hour Progress
+## First Commit Progress
 
-The first hour focused on setting up the project structure and building the basic interactive map.
+The first commit focused on setting up the project structure and building the basic interactive map.
 
-## First Hour Built
+## First Commit Built
 
 - Created the main project files
 - Added HTML structure
@@ -21,11 +21,11 @@ The first hour focused on setting up the project structure and building the basi
 - Added a submit button
 - Added the first sample landmark: Eiffel Tower, France
 
-## Second Hour Progress
+## Second Commit Progress
 
-The second hour focused on adding the main game logic.
+The second commit focused on adding the main game logic.
 
-## Second Hour Built
+## Second Commit Built
 
 - Added user guess marker
 - Added correct answer marker
@@ -34,14 +34,14 @@ The second hour focused on adding the main game logic.
 - Added score calculation
 - Added result message showing distance and score
 - Prevented users from changing their guess after submitting
-- Turned th emap from a basic demo into a playable first version
+- Turned the map from a basic demo into a playable first version
 
 
-## Third Hour Progress
+## Third Commit Progress
 
-The third hour focused on expanding the game from one round into a multi-round experience.
+The third commit focused on expanding the game from one round into a multi-round experience.
 
-## Third Hour Built
+## Third Commit Built
 
 - Added multiple landmarks
 - Added current round tracking
@@ -52,6 +52,22 @@ The third hour focused on expanding the game from one round into a multi-round e
 - Cleared old markers and lines between rounds
 - Added a game-over state
 - Displayed the final score after all landmarks are completed
+
+
+## Fourth Commit Progress
+
+The fourth commit focused on improving the learning experience and game flow.
+
+## Fourth Commit Built
+
+- Added hints for each landmark
+- Added a Show Hint button
+- Added a 100-point penalty for using a hint
+- Added facts about each landmark after the user submits a guess
+- Added a Restart Game button
+- Added replay functionality after game over
+- Improved button behavior during active rounds and game over
+- Made the game more educational and complete
 
 ## Current Features
 
@@ -66,9 +82,14 @@ The third hour focused on expanding the game from one round into a multi-round e
 - Distance-based feedback
 - Score out of 1000 for each round
 - Total score tracking
+- Hint system
+- Hint score penalty
+- Landmark facts
 - Final game-over message
+- Restart game option
 
 ## Tools Used
+
 - HTML
 - CSS
 - JavaScript
@@ -82,10 +103,10 @@ The third hour focused on expanding the game from one round into a multi-round e
 
 - Add more landmarks
 - Add difficulty levels
-- Add hint button
 - Add timer for each round
-- Add restart game button
 - Add high score using localStorage
 - Add better marker colors for guess and answer
 - Add mobile responsive improvements
-- Add facts about each landmark after each guess
+- Add categories such as World, USA, India and Wonders
+- Add Sound effects
+- Add animations

@@ -94,6 +94,34 @@ button:hover {
     color: #334155;
 }
 
+#factMessage {
+    margin-top: 12px;
+    line-height: 1.5;
+    color: #475569;
+    font-style: italic;
+}
+
+#hintBtn {
+    background: #16a34a;
+}
+
+#hintBtn:hover {
+    background: #15803d;
+}
+
+#restartGameBtn {
+    background: #dc2626;
+}
+
+#restartGameBtn:hover {
+    background: #b81c1c;
+}
+
+button:disabled {
+    background: #cbd5e1;
+    cursor: not-allowed;
+}
+
 #map {
     height: 600px;
     border-radius: 14px;
