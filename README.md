@@ -36,16 +36,37 @@ The second hour focused on adding the main game logic.
 - Prevented users from changing their guess after submitting
 - Turned th emap from a basic demo into a playable first version
 
+
+## Third Hour Progress
+
+The third hour focused on expanding the game from one round into a multi-round experience.
+
+## Third Hour Built
+
+- Added multiple landmarks
+- Added current round tracking
+- Added total score tracking
+- Made the Next Round button work
+- Updated the target landmark dynamically
+- Updated the round title dynamically
+- Cleared old markers and lines between rounds
+- Added a game-over state
+- Displayed the final score after all landmarks are completed
+
 ## Current Features
 
 - Interactive world map
 - Click-to-guess gameplay
-- Landmark target prompt
+- Multiple landmark rounds
+- Dynamic round number
+- Dynamic target landmark
 - User guess marker
 - Correct answer marker
-- Distance-based feedback
-- Score out of 1000
 - Visual line between the guess and correct location
+- Distance-based feedback
+- Score out of 1000 for each round
+- Total score tracking
+- Final game-over message
 
 ## Tools Used
 - HTML
@@ -59,11 +80,12 @@ The second hour focused on adding the main game logic.
 
 ## Future Improvements
 
-- Add multiple landmarks
-- Make the next Round button work
-- And total score across rounds
-- Add final results screen
+- Add more landmarks
 - Add difficulty levels
-- Add hints for each landmark
-- Add responsive mobile improvements
+- Add hint button
+- Add timer for each round
+- Add restart game button
 - Add high score using localStorage
+- Add better marker colors for guess and answer
+- Add mobile responsive improvements
+- Add facts about each landmark after each guess
