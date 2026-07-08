@@ -58,10 +58,21 @@ body {
     color: #0f172a;
 }
 
-#scoreDisplay {
+.score-box {
     margin-bottom: 20px;
+    padding: 12px;
+    background: #f1f5f9;
+    border-radius: 10px;
+}
+
+#scoreDisplay,
+#highScoreDisplay {
     font-weight: bold;
     color: #12355b;
+}
+
+#scoreDisplay {
+    margin-bottom: 6px;
 }
 
 button {
@@ -114,7 +125,7 @@ button:hover {
 }
 
 #restartGameBtn:hover {
-    background: #b81c1c;
+    background: #b91c1c;
 }
 
 button:disabled {

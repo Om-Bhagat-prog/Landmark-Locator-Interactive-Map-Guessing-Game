@@ -15,27 +15,36 @@ const places = [
     {
         name: "Taj Mahal, India",
         lat: 27.1751,
-        lng: 78.0421
+        lng: 78.0421,
+        hint: "This white marble monument is in Agra, India",
+        fact: "The Taj Mahal was built by Mughal emperor Shah Jahan in memory of his wife Mumtaz Mahal."
     },
     {
         name: "Statue of Liberty, USA",
         lat: 40.6892,
-        lng: -74.0445
+        lng: -74.0445,
+        hint: "This landmark stands on an island near New York City.",
+        fact: "The Statue of Liberty was a gift from France to the United States."
     },
     {
         name: "Great Wall of China",
         lat: 40.4319,
-        lng: 116.5704
+        lng: 116.5704,
+        hint: "This historic wall stretches across northern China.",
+        fact: "The Great Wall of China was built over many centuries to protect Chinese states and empires."
     },
     {
         name: "Machu Picchu, Peru",
         lat: -13.1631,
-        lng: -72.5450
+        lng: -72.5450,
+        hint: "This ancient site is located high in the Andres Mountains",
+        fact: "Machu Picchu is an Inca citadel in Peru and one of the most famous archaelogical sites in the world."
     }
 ];
 
 let currentRoundIndex = 0;
 let totalScore = 0;
+let highScore = Number(localStorage.getItem("landmarkLocatorHighScore")) || 0;
 let userMarker = null;
 let correctMarker = null;
 let resultLine = null;
@@ -46,6 +55,7 @@ let hintUsed = false;
 const roundTitle = document.getElementById("roundTitle");
 const targetPlace = document.getElementById("targetPlace");
 const scoreDisplay = document.getElementById("scoreDisplay");
+const highScoreDisplay = document.getElementById("highScoreDisplay");
 const resultMessage = document.getElementById("resultMessage");
 const factMessage = document.getElementById("factMessage");
 const hintBtn = document.getElementById("hintBtn");
@@ -111,13 +121,32 @@ submitGuessBtn.addEventListener("click", function() {
 
     let score = calculateScore(distanceKm);
 
+    if (hintUsed === true) {
+        score = Math.max(0, score - 100);
+    }
+    
     totalScore = totalScore + score;
-    scoreDisplay.textContent =  `Total Score: ${totalScore}`;
+    updateScoreDisplay();
 
     resultMessage.textContent = 
-    `You were ${distanceKm.toFixed(1)} km away. Score: ${score} / 1000.`;
+        `You were ${distanceKm.toFixed(1)} km away. Score: ${score} / 1000.`;
+
+        if (hintUsed === true) {
+            resultMessage.textContent += " Hint penalty: -100 points.";
+        }
+
+    factMessage.textContent = `Fact: ${correctPlace.fact}`;
 
     roundSubmitted = true;
+    hintBtn.disabled = true;
+
+    if (hintUsed === true) {
+    resultMessage.textContent += " Hint penalty: -100 points.";
+    }
+
+    factMessage.textContent = `Fact: ${correctPlace.fact}`;
+
+    hintBtn.disabled = true;
 });
 
 function calculateDistanceKm(lat1, lng1, lat2, lng2) {
@@ -170,9 +199,9 @@ nextRoundBtn.addEventListener("click", function() {
 function displayCurrentRound() {
     const currentPlace = places[currentRoundIndex];
 
-    roundTitle.textContent = `Round ${currentRoundIndex + 1}`;
+    roundTitle.textContent =  `Round ${currentRoundIndex + 1} of ${places.length}`;
     targetPlace.textContent = currentPlace.name;
-    scoreDisplay.textContent = `Total Score: ${totalScore}`;
+    updateScoreDisplay();
     resultMessage.textContent = "Make your guess by clicking on the map.";
     factMessage.textContent = "";
 
@@ -206,8 +235,16 @@ function endGame() {
     resetMapMarkers();
     roundTitle.textContent = "Game Over";
     targetPlace.textContent = "All landmarks completed.";
+    const isNewHighScore = updateHighScore();
+    updateScoreDisplay();
+
     resultMessage.textContent = 
-    `Final Score: ${totalScore} / ${places.length * 1000}`;
+        `Final Score: ${totalScore} / ${places.length * 1000}.`;
+
+        if (isNewHighScore === true) {
+            resultMessage.textContent += " New high score!";
+        }
+
     factMessage.textContent = "Click Restart Game to play again.";
 
     hintBtn.disabled = true;
@@ -228,20 +265,8 @@ hintBtn.addEventListener("click", function () {
     hintBtn.disabled = true;
 });
 
-if (hintUsed === true) {
-    score = Math.max(0, score - 100);
-}
-
-if (hintUsed === true) {
-    resultMessage.textContent += " Hint penalty: -100 points.";
-}
-
-factMessage.textContent = `Facts: ${correctPlace.fact}`;
-
-hintBtn.disabled = true;
-
 restartGameBtn.addEventListener("click", function () {
-    restartGameBtn();
+    restartGame();
 });
 
 function restartGame() {
@@ -254,4 +279,19 @@ function restartGame() {
     hintUsed = false;
 
     displayCurrentRound();
+}
+
+function updateScoreDisplay() {
+    scoreDisplay.textContent = `Total Score: ${totalScore}`;
+    highScoreDisplay.textContent = `High Score: ${highScore}`;
+}
+
+function updateHighScore() {
+    if (totalScore > highScore) {
+        highScore = totalScore;
+        localStorage.setItem("landmarkLocatorHighScore", highScore);
+        return true;
+    }
+
+    return false;
 }

@@ -36,7 +36,6 @@ The second commit focused on adding the main game logic.
 - Prevented users from changing their guess after submitting
 - Turned the map from a basic demo into a playable first version
 
-
 ## Third Commit Progress
 
 The third commit focused on expanding the game from one round into a multi-round experience.
@@ -53,7 +52,6 @@ The third commit focused on expanding the game from one round into a multi-round
 - Added a game-over state
 - Displayed the final score after all landmarks are completed
 
-
 ## Fourth Commit Progress
 
 The fourth commit focused on improving the learning experience and game flow.
@@ -69,8 +67,21 @@ The fourth commit focused on improving the learning experience and game flow.
 - Improved button behavior during active rounds and game over
 - Made the game more educational and complete
 
-## Current Features
+## Fifth Commit Progress
 
+the Fifth hour focused on saving player progress and improving score feedback.
+
+## Fifth Commit Built
+
+- Added high score display
+- Added persistent high score saving with localStorage
+- Loaded the saved high score when the page opens
+- Compared final score against the saved high score
+- Displayed a New high score message when the player beats the record
+- Improved the score area layout
+- Updated round text to show progress, such as Round 1 of 5
+
+## Current Features
 - Interactive world map
 - Click-to-guess gameplay
 - Multiple landmark rounds
@@ -78,14 +89,16 @@ The fourth commit focused on improving the learning experience and game flow.
 - Dynamic target landmark
 - User guess marker
 - Correct answer marker
-- Visual line between the guess and correct location
+- Visual line between guess and correct location
 - Distance-based feedback
 - Score out of 1000 for each round
 - Total score tracking
+- High score saving
+- Browser localStorage support
 - Hint system
 - Hint score penalty
 - Landmark facts
-- Final game-over message
+- Final game-over messsage
 - Restart game option
 
 ## Tools Used
@@ -104,9 +117,9 @@ The fourth commit focused on improving the learning experience and game flow.
 - Add more landmarks
 - Add difficulty levels
 - Add timer for each round
-- Add high score using localStorage
+- Add high score reset button
 - Add better marker colors for guess and answer
 - Add mobile responsive improvements
-- Add categories such as World, USA, India and Wonders
-- Add Sound effects
+- Add categories such as World, USA, India, and Wonders
+- Add sound effects
 - Add animations
