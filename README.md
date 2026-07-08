@@ -110,7 +110,7 @@ The seventh commit focused on adding difficulty levels.
 
 ## Eighth Commit Progress
 
-The eighth hour focused on improving the high score system.
+The eighth commit focused on improving the high score system.
 
 ## Eighth Commit Built
 
@@ -139,7 +139,7 @@ The ninth commit focused on adding landmark categories.
 
 ## Tenth Commit Progress
 
-The tenth hour focused on improving replayability and game polish.
+The tenth commit focused on improving replayability and game polish.
 
 ## Tenth Commit Built
 
@@ -150,9 +150,30 @@ The tenth hour focused on improving replayability and game polish.
 - Added a mode summary showing the current difficulty and category
 - Improved the overall game flow and replay value
 
+
+## Eleventh Commit Progress
+
+The eleventh commit focused on adding a proper start screen and fixing the game start flow.
+
+## Eleventh Commit Built
+
+- Added a start screen before active gameplay begins
+- Added Start Game functionality
+- Prevented users from guessing before the game starts
+- Added a clean game initialization flow
+- Added the missing PrepareStartScreen() function
+- Added the missing startGame() function
+- Fixed the settings summary function typo
+- Fixed the Start Game button hover selector in CSS
+- Disabled hint, submit, and next round buttons before the game starts
+- Locked difficulty and category settings during active gameplay
+Improved the transition from setup mode into the first round
+
 ## Current Features
 
 - Interactive world map
+- Start screen
+- Start Game button
 - Click-to-guess gameplay
 - Multiple landmark rounds
 - Randomized landmark order
@@ -177,6 +198,7 @@ The tenth hour focused on improving replayability and game polish.
 - Final game-over message
 - Restart game option
 - Reset high score option
+- Basic responsive layout
 
 ## Tools Used
 
@@ -201,4 +223,5 @@ The tenth hour focused on improving replayability and game polish.
 - Add sound effects
 - Add animations
 - Add leaderboard-style score history
-- Add start screen
+- Add a better final results screen
+- Add score history for previous games

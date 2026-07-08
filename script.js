@@ -44,6 +44,126 @@ const allPlaces = [
         category: "world",
         hint: "This ancient site is located high in the Andes Mountains.",
         fact: "Machu Picchu is an Inca citadel in Peru and one of the most famous archaeological sites in the world."
+    },
+    {
+        name: "Mount Rushmore, USA",
+        lat: 43.8791,
+        lng: -103.4591,
+        category: "usa",
+        hint: "This landmark has four U.S. presidents carved into a mountain.",
+        fact: "Mount Rushmore features the faces of George Washington, Thomas Jefferson, Theodore Roosevelt, and Abraham Lincoln."
+    },
+    {
+        name: "Golden Gate Bridge, USA",
+        lat: 37.8199,
+        lng: -122.4783,
+        category: "usa",
+        hint: "This famous orange bridge is in San Francisco",
+        fact: "The Golden Gate Bridge opened in 1937 and is one of the most recognized bridges in the world."
+    },
+    {
+        name: "White House, USA",
+        lat: 38.8977,
+        lng: -77.0365,
+        category: "usa",
+        hint: "This is the official residence of the President of the United States.",
+        fact: "The White House has been the official home of every U.S. president since John Adams."
+    },
+    {
+        name: "Disney World, USA",
+        lat: 28.3852,
+        lng: -81.5639,
+        category: "usa",
+        hint: "This major theme park resort is located in Florida.",
+        fact: "Walt Disney World opened in 1971 and is one of the most visited vacation resorts in the world."
+    },
+    {
+        name: "Gateway Arch, USA",
+        lat: 38.6247,
+        lng: -90.1848,
+        category: "usa",
+        hint: "This tall silver arch is in St. Louis, Missouri.",
+        fact: "The Gateway Arch is 630 feet tall and represents westward expansion in the United States."
+    },
+    {
+        name: "India Gate, India",
+        lat: 28.619,
+        lng: 77.2295,
+        category: "india",
+        hint: "This war memorial is located in New Delhi.",
+        fact: "India Gate was buit to honor Indian soldiers who died during World War I."
+    },
+    {
+        name: "Red Fort, India",
+        lat: 28.6562,
+        lng: 77.2410,
+        category: "india",
+        hint: "This red sandstone fort is in Old Delhi.",
+        fact: "The Red Fort was built by Mughal emperor Shah Jahan and is a UNESCO World Heritage Site"
+    },
+    {
+        name: "Hawa Mahal, India",
+        lat: 26.9239,
+        lng: 75.8267,
+        category: "india",
+        hint: "This pink palace with many windows is in Jaipur.",
+        fact: "Hawa Mahal is known as the Palace of Winds and was built in 1799."
+    },
+    {
+        name: "Charminar, India",
+        lat: 17.3616,
+        lng: 78.4747,
+        category: "india",
+        hint: "This four-minaret monument is in Hyderabad.",
+        fact: "Charminar was built in 1591 and is one of the Hyderabad's most famous landmarks."
+    },
+    {
+        name: "Mysore Palace, India",
+        lat: 12.3052,
+        lng: 76.6552,
+        category: "india",
+        hint: "This royal palace is in Karnataka",
+        fact: "Mysore Palace is one of the most visited tourist attractions in India."
+    },
+    {
+        name: "Colosseum, Italy",
+        lat: 41.8902,
+        lng: 12.4922,
+        category: "world",
+        hint: "This ancient amphitheater is in Rome.",
+        fact: "The Colosseum was used for gladiator contests and public events in ancient Rome."
+    },
+    {
+        name: "Christ the Redeemer, Brazil",
+        lat: -22.9519,
+        lng: -42.2105,
+        category: "world",
+        hint: "This large statue overlooks Rio de Janerio",
+        fact: "Christ the Redeemer is one of the New Seven Wonders of the World."
+    },
+    {
+        name: "Petra, Jordan",
+        lat: 30.3285,
+        lng: 35.4444,
+        category: "world",
+        hint: "This ancient city is famous for buildings carved into rose-colored rock.",
+        fact: "Petra was once a major trading center and is now a UNESCO World Heritage Site."
+    },
+    {
+        name: "Pyramids of Giza, Egypt",
+        lat: 29.9792,
+        lng: 31.1342,
+        category: "world",
+        hint: "These ancient pyramids are near Cairo.",
+        fact: "The Great Pyramid of Giza is the oldest of the Seven Wonders of the Ancient World."
+    },
+    {
+        name: "Sydney Opera House, Australia",
+        lat: -33.8568,
+        lng: 151.2153,
+        category: "world",
+        hint: "This building has a sail-like roof and is in Australia.",
+        fact: "The Sydney OPera House opened in 1973 and is one of the most famous performing arts centers in the world."
     }
 ];
 
