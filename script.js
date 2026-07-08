@@ -4,6 +4,24 @@ L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
     attribution: "&copy; OpenStreetMap contributors"
 }).addTo(map);
 
+const guessIcon = L.icon({
+    iconUrl: "https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-blue.png",
+    shadowUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png",
+    iconSize: [25, 41],
+    iconAnchor: [12, 41],
+    popupAnchor: [1, -34],
+    shadowSize: [41, 41]
+});
+
+const correctIcon = L.icon({
+    iconUrl: "https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-green.png",
+    shadowUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png",
+    iconSize: [25, 41],
+    iconAnchor: [12, 41],
+    popupAnchor: [1, -34],
+    shadowSize: [41, 41]
+});
+
 const allPlaces = [
     {
     name: "Eiffel Tower, France",
@@ -230,7 +248,9 @@ map.on("click", function (event) {
         map.removeLayer(userMarker);
     }
 
-    userMarker = L.marker([userGuess.lat, userGuess.lng])
+    userMarker = L.marker([userGuess.lat, userGuess.lng], {
+        icon: guessIcon
+    })
         .addTo(map)
         .bindPopup("Your Guess");
 
@@ -258,14 +278,17 @@ submitGuessBtn.addEventListener("click", function() {
             [correctPlace.lat, correctPlace.lng]
         ],
         {
-            weight: 3
+            weight: 3,
+            dashArray: "8, 8"
         }
     ).addTo(map);
 
-    correctMarker = L.marker([correctPlace.lat, correctPlace.lng])
-    .addTo(map)
-    .bindPopup(correctPlace.name)
-    .openPopup();
+    correctMarker = L.marker([correctPlace.lat, correctPlace.lng], {
+        icon: correctIcon
+    })
+        .addTo(map)
+        .bindPopup(correctPlace.name)
+        .openPopup();
 
     const distanceKm = calculateDistanceKm(
         userGuess.lat,
@@ -467,7 +490,9 @@ function handleTimeUp() {
 
     const correctPlace = currentPlaces[currentRoundIndex];
 
-    correctMarker = L.marker([correctPlace.lat, correctPlace.lng])
+    correctMarker = L.marker([correctPlace.lat, correctPlace.lng], {
+        icon: correctIcon
+    })
         .addTo(map)
         .bindPopup(correctPlace.name)
         .openPopup();
