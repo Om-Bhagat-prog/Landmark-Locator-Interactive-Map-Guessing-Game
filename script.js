@@ -59,7 +59,7 @@ let selectedDifficulty = "normal";
 let selectedCategory = "all";
 let timeLimit = difficultySettings[selectedDifficulty];
 
-let currentPlaces = getPlacesForCategory();
+let currentPlaces = getShuffledPlacesForCategory();
 let highScore = loadHighScore();
 
 let userMarker = null;
@@ -78,6 +78,7 @@ const scoreDisplay = document.getElementById("scoreDisplay");
 const highScoreDisplay = document.getElementById("highScoreDisplay");
 const difficultySelect = document.getElementById("difficultySelect");
 const categorySelect = document.getElementById("categorySelect");
+const settingsSummary = document.getElementById("settingsSummary");
 const timerDisplay = document.getElementById("timerDisplay");
 const resultMessage = document.getElementById("resultMessage");
 const factMessage = document.getElementById("factMessage");
@@ -153,6 +154,7 @@ submitGuessBtn.addEventListener("click", function() {
     
     totalScore = totalScore + score;
     updateScoreDisplay();
+    updatesSettingsSummary();
 
     resultMessage.textContent = 
         `You were ${distanceKm.toFixed(1)} km away. Score: ${score} / 1000.`;
@@ -224,6 +226,7 @@ function displayCurrentRound() {
     roundTitle.textContent =  `Round ${currentRoundIndex + 1} of ${currentPlaces.length}`;
     targetPlace.textContent = currentPlace.name;
     updateScoreDisplay();
+    updateSettingsSummary();
     resultMessage.textContent = "Make your guess by clicking on the map.";
     factMessage.textContent = "";
 
@@ -300,7 +303,7 @@ function restartGame() {
     stopTimer();
     resetMapMarkers();
 
-    currentPlaces = getPlacesForCategory();
+    currentPlaces = getShuffledPlacesForCategory();
 
     currentRoundIndex = 0;
     totalScore = 0;
@@ -413,7 +416,7 @@ function capitalizeFirstLetter(word) {
 
 categorySelect.addEventListener("change", function () {
     selectedCategory = categorySelect.value;
-    currentPlaces = getPlacesForCategory();
+    currentPlaces = getShuffledPlacesForCategory();
     highScore = loadHighScore();
 
     restartGame();
@@ -447,3 +450,28 @@ function getCategoryName() {
 
     return "Unknown";
 }
+
+function getShuffledPlacesForCategory() {
+    const filteredPlaces = getPlacesForCategory();
+    return shufflePlaces(filteredPlaces);
+}
+
+function shufflePlaces(placesToShuffle) {
+    const shuffledPlaces = [...placesToShuffle];
+
+    for (let i = shuffledPlaces.length - 1; i > 0; i--) {
+        const randomIndex = Math.floor(Math.random() * (i + 1));
+
+        const temporaryPlace = shuffledPlaces[i];
+        shuffledPlaces[i] = shuffledPlaces[randomIndex];
+        shuffledPlaces[randomIndex] = temporaryPlace;
+    }
+
+    return shuffledPlaces;
+}
+
+function updateSettingsSummary() {
+    settingsSummary.textContent = 
+        `Mode: ${capitalizeFirstLetter(selectedDifficulty)} / ${getCategoryName()}`;
+}
+

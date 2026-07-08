@@ -85,6 +85,16 @@ body {
     color: #1f2933;
 }
 
+#settingsSummary {
+    margin-bottom: 16px;
+    padding: 10px;
+    background: #e0f2fe;
+    border-radius: 8px;
+    font-weight: bold;
+    color: #075985;
+    text-align: center;
+}
+
 #scoreDisplay,
 #highScoreDisplay,
 #timerDisplay {

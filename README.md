@@ -125,7 +125,7 @@ The eighth hour focused on improving the high score system.
 
 The ninth commit focused on adding landmark categories.
 
-## Ninth Hour Built
+## Ninth Commit Built
 
 - Added category selection
 - Added All landmarks, World Wonders,, USA, and India categories
@@ -137,11 +137,25 @@ The ninth commit focused on adding landmark categories.
 - Locked category changes during active gameplay
 - Re-enabled category selection after restart or game over
 
+## Tenth Commit Progress
+
+The tenth hour focused on improving replayability and game polish.
+
+## Tenth Commit Built
+
+- Added randomized landmark order
+- Shuffled the selected category at the start of each game
+- Shuffled landmarks again when Restart Game is clicked
+- Kept category filtereing working with randomized order
+- Added a mode summary showing the current difficulty and category
+- Improved the overall game flow and replay value
+
 ## Current Features
 
 - Interactive world map
 - Click-to-guess gameplay
 - Multiple landmark rounds
+- Randomized landmark order
 - Category-based landmark selection
 - Dynamic round number
 - Dynamic target landmark
@@ -156,6 +170,7 @@ The ninth commit focused on adding landmark categories.
 - Timed rounds
 - Timeout handling
 - Difficulty levels
+- Current mode summary
 - Hint system
 - Hint score penalty
 - Landmark facts
@@ -186,4 +201,4 @@ The ninth commit focused on adding landmark categories.
 - Add sound effects
 - Add animations
 - Add leaderboard-style score history
-- Add random landmark order
+- Add start screen
