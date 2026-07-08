@@ -16,7 +16,7 @@ const places = [
         name: "Taj Mahal, India",
         lat: 27.1751,
         lng: 78.0421,
-        hint: "This white marble monument is in Agra, India",
+        hint: "This white marble monument is in Agra, India.",
         fact: "The Taj Mahal was built by Mughal emperor Shah Jahan in memory of his wife Mumtaz Mahal."
     },
     {
@@ -37,8 +37,8 @@ const places = [
         name: "Machu Picchu, Peru",
         lat: -13.1631,
         lng: -72.5450,
-        hint: "This ancient site is located high in the Andres Mountains",
-        fact: "Machu Picchu is an Inca citadel in Peru and one of the most famous archaelogical sites in the world."
+        hint: "This ancient site is located high in the Andes Mountains.",
+        fact: "Machu Picchu is an Inca citadel in Peru and one of the most famous archaeological sites in the world."
     }
 ];
 
@@ -51,11 +51,14 @@ let resultLine = null;
 let userGuess = null;
 let roundSubmitted = false;
 let hintUsed = false;
+let timeLeft = 30;
+let timerInterval = null;
 
 const roundTitle = document.getElementById("roundTitle");
 const targetPlace = document.getElementById("targetPlace");
 const scoreDisplay = document.getElementById("scoreDisplay");
 const highScoreDisplay = document.getElementById("highScoreDisplay");
+const timerDisplay = document.getElementById("timerDisplay");
 const resultMessage = document.getElementById("resultMessage");
 const factMessage = document.getElementById("factMessage");
 const hintBtn = document.getElementById("hintBtn");
@@ -94,6 +97,8 @@ submitGuessBtn.addEventListener("click", function() {
         resultMessage.textContent = "This round has already been submitted.";
         return;
     }
+
+    stopTimer();
 
     const correctPlace = places[currentRoundIndex];
 
@@ -139,14 +144,7 @@ submitGuessBtn.addEventListener("click", function() {
 
     roundSubmitted = true;
     hintBtn.disabled = true;
-
-    if (hintUsed === true) {
-    resultMessage.textContent += " Hint penalty: -100 points.";
-    }
-
-    factMessage.textContent = `Fact: ${correctPlace.fact}`;
-
-    hintBtn.disabled = true;
+    submitGuessBtn.disabled = true;
 });
 
 function calculateDistanceKm(lat1, lng1, lat2, lng2) {
@@ -212,6 +210,7 @@ function displayCurrentRound() {
     hintBtn.disabled = false;
     submitGuessBtn.disabled = false;
     nextRoundBtn.disabled = false;
+    startTimer();
 }
 
 function resetMapMarkers() {
@@ -232,7 +231,9 @@ function resetMapMarkers() {
 }
 
 function endGame() {
+    stopTimer();
     resetMapMarkers();
+    timerDisplay.textContent = "Time Left: 0s";
     roundTitle.textContent = "Game Over";
     targetPlace.textContent = "All landmarks completed.";
     const isNewHighScore = updateHighScore();
@@ -270,8 +271,9 @@ restartGameBtn.addEventListener("click", function () {
 });
 
 function restartGame() {
+    stopTimer();
     resetMapMarkers();
-
+    
     currentRoundIndex = 0;
     totalScore = 0;
     userGuess = null;
@@ -295,3 +297,52 @@ function updateHighScore() {
 
     return false;
 }
+
+function handleTimeUp() {
+    if (roundSubmitted === true) {
+        return;
+    }
+
+    const correctPlace = places[currentRoundIndex];
+
+    correctMarker = L.marker([correctPlace.lat, correctPlace.lng])
+        .addTo(map)
+        .bindPopup(correctPlace.name)
+        .openPopup();
+
+    resultMessage.textContent = "Time is up. You scored 0 points for this round.";
+    factMessage.textContent = `Fact: ${correctPlace.fact}`;
+
+    roundSubmitted = true;
+    hintBtn.disabled = true;
+    submitGuessBtn.disabled = true;
+}
+
+function startTimer() {
+    stopTimer();
+
+    timeLeft = 30;
+    updateTimerDisplay();
+
+    timerInterval = setInterval(function () {
+        timeLeft = timeLeft - 1;
+        updateTimerDisplay();
+
+        if (timeLeft <= 0) {
+            stopTimer();
+            handleTimeUp();
+        }
+    }, 1000);
+}
+
+function stopTimer() {
+    if (timerInterval !== null) {
+        clearInterval(timerInterval);
+        timerInterval = null;
+    }
+}
+
+function updateTimerDisplay() {
+    timerDisplay.textContent = `Time Left: ${timeLeft}s`;
+}
+

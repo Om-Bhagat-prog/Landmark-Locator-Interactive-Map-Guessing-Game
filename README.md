@@ -81,24 +81,38 @@ the Fifth hour focused on saving player progress and improving score feedback.
 - Improved the score area layout
 - Updated round text to show progress, such as Round 1 of 5
 
+## Sixth Commit Built
+
+- Added a 30-second timer for each round
+- Added a timer display to the score panel
+- Started the timer automatically at the beginning of each round
+- Stopped timer when the user submits a guess
+- Reset the timer when moving to the next round
+- Added timeout handling when time reaches o
+- Revealed the correct location when time runs out
+- Gave 0 points for timed-out rounds
+- Stopped the timer at game over restart
+
 ## Current Features
 - Interactive world map
 - Click-to-guess gameplay
 - Multiple landmark rounds
 - Dynamic round number
-- Dynamic target landmark
+- Dunamic target landmark
 - User guess marker
 - Correct answer marker
-- Visual line between guess and correct location
+- Visual line between the guess and correct location
 - Distance-based feedback
 - Score out of 1000 for each round
 - Total score tracking
 - High score saving
 - Browser localStorage support
+- 30-second round timer
+- Timeout handling
 - Hint system
 - Hint score penalty
 - Landmark facts
-- Final game-over messsage
+- Final game-over message
 - Restart game option
 
 ## Tools Used
@@ -108,6 +122,9 @@ the Fifth hour focused on saving player progress and improving score feedback.
 - JavaScript
 - Leaflet.js
 - OpenStreetMap
+- localStorage
+- setInterval
+- clearInterval
 - VS Code
 - Git
 - Github
@@ -116,7 +133,7 @@ the Fifth hour focused on saving player progress and improving score feedback.
 
 - Add more landmarks
 - Add difficulty levels
-- Add timer for each round
+- Add timer settings by difficulty
 - Add high score reset button
 - Add better marker colors for guess and answer
 - Add mobile responsive improvements

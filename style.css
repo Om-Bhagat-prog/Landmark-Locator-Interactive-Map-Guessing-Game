@@ -66,13 +66,19 @@ body {
 }
 
 #scoreDisplay,
-#highScoreDisplay {
+#highScoreDisplay,
+#timerDisplay {
     font-weight: bold;
     color: #12355b;
 }
 
-#scoreDisplay {
+#scoreDisplay,
+#highScoreDisplay {
     margin-bottom: 6px;
+}
+
+#timerDisplay {
+    color: #dc2626;
 }
 
 button {
