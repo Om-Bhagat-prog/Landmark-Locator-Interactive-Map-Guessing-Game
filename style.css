@@ -65,14 +65,16 @@ body {
     border-radius: 10px;
 }
 
-.difficulty-label {
+.difficulty-label,
+.category-label {
     display: block;
     margin-bottom: 6px;
     font-weight: bold;
     color: #12355b;
 }
 
-#difficultySelect {
+#difficultySelect,
+#categorySelect {
     width: 100%;
     padding: 10px;
     margin-bottom: 16px;
@@ -80,7 +82,7 @@ body {
     border-radius: 8px;
     font-size: 1rem;
     background: white;
-    color: 1f2933;
+    color: #1f2933;
 }
 
 #scoreDisplay,

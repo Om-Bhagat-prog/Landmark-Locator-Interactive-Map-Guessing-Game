@@ -97,7 +97,7 @@ the fifth commit focused on saving player progress and improving score feedback.
 
 The seventh commit focused on adding difficulty levels.
 
-## Seventh Hour Built
+## Seventh Commit Built
 
 - Added Easy, Normal, and Hard difficulty options
 - Set Easy mode to 45 seconds per round
@@ -108,11 +108,11 @@ The seventh commit focused on adding difficulty levels.
 - Disabled difficulty changes during active gameplay
 - Re-enabled difficulty selection after restart or game over
 
-## Eighth Hour Progress
+## Eighth Commit Progress
 
 The eighth hour focused on improving the high score system.
 
-## Eighth Hour Built
+## Eighth Commit Built
 
 - Added separate high scores for Easy, Normal, and Hard modes
 - Saved each difficulty high score with a different LocalStorage key
@@ -121,11 +121,28 @@ The eighth hour focused on improving the high score system.
 - Added a Reset High Score button
 - Reset only the high score for the currently selected difficulty
 
+## Ninth Commit Progress
+
+The ninth commit focused on adding landmark categories.
+
+## Ninth Hour Built
+
+- Added category selection
+- Added All landmarks, World Wonders,, USA, and India categories
+- Added category values to each landmark
+- Added more landmarks to support category gameplay
+- Filtered the round list based on the selected category
+- Updated round count based on the selected category
+- Saved high scores separatley by difficulty and category
+- Locked category changes during active gameplay
+- Re-enabled category selection after restart or game over
+
 ## Current Features
 
 - Interactive world map
 - Click-to-guess gameplay
 - Multiple landmark rounds
+- Category-based landmark selection
 - Dynamic round number
 - Dynamic target landmark
 - User guess marker
@@ -134,7 +151,7 @@ The eighth hour focused on improving the high score system.
 - Distance-based feedback
 - Score out of 1000 for each round
 - Total score tracking
-- Difficulty-specific high scores
+- Difficulty-specific and category-specific high scores
 - Browser localStorage support
 - Timed rounds
 - Timeout handling
@@ -163,10 +180,10 @@ The eighth hour focused on improving the high score system.
 ## Future Improvements
 
 - Add more landmarks
-- Add category selection
+- Add more categories such as Europe, Asia, South America, and Monuments
 - Add better marker colors for guess and answer
 - Add mobile responsive improvements
-- Add categories such as World, USA, India, and Wonders
 - Add sound effects
 - Add animations
 - Add leaderboard-style score history
+- Add random landmark order
