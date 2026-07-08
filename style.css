@@ -152,6 +152,14 @@ button:hover {
     background: #b91c1c;
 }
 
+#resetHighScoreBtn {
+    background: #f97316;
+}
+
+#resetHighScoreBtn:hover {
+    background: #ea580c;
+}
+
 button:disabled {
     background: #cbd5e1;
     cursor: not-allowed;

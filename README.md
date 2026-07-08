@@ -108,6 +108,19 @@ The seventh commit focused on adding difficulty levels.
 - Disabled difficulty changes during active gameplay
 - Re-enabled difficulty selection after restart or game over
 
+## Eighth Hour Progress
+
+The eighth hour focused on improving the high score system.
+
+## Eighth Hour Built
+
+- Added separate high scores for Easy, Normal, and Hard modes
+- Saved each difficulty high score with a different LocalStorage key
+- Loaded the correct high score when difficulty changes
+- Updated the high score display to show the selected difficulty
+- Added a Reset High Score button
+- Reset only the high score for the currently selected difficulty
+
 ## Current Features
 
 - Interactive world map
@@ -121,16 +134,17 @@ The seventh commit focused on adding difficulty levels.
 - Distance-based feedback
 - Score out of 1000 for each round
 - Total score tracking
-- High score saving
+- Difficulty-specific high scores
 - Browser localStorage support
 - Timed rounds
 - Timeout handling
-- Diffculty levels
+- Difficulty levels
 - Hint system
 - Hint score penalty
 - Landmark facts
 - Final game-over message
 - Restart game option
+- Reset high score option
 
 ## Tools Used
 
@@ -150,10 +164,9 @@ The seventh commit focused on adding difficulty levels.
 
 - Add more landmarks
 - Add category selection
-- Add high score reset button
-- Add separate high scores for each difficulty
 - Add better marker colors for guess and answer
 - Add mobile responsive improvements
 - Add categories such as World, USA, India, and Wonders
 - Add sound effects
 - Add animations
+- Add leaderboard-style score history

@@ -50,15 +50,17 @@ const difficultySettings = {
 
 let currentRoundIndex = 0;
 let totalScore = 0;
-let highScore = Number(localStorage.getItem("landmarkLocatorHighScore")) || 0;
+let selectedDifficulty = "normal";
+let timeLimit = difficultySettings[selectedDifficulty];
+let highScore = loadHighScore();
+
 let userMarker = null;
 let correctMarker = null;
 let resultLine = null;
 let userGuess = null;
 let roundSubmitted = false;
 let hintUsed = false;
-let selectedDifficulty = "normal";
-let timeLimit = difficultySettings[selectedDifficulty];
+
 let timeLeft = timeLimit;
 let timerInterval = null;
 
@@ -74,6 +76,7 @@ const hintBtn = document.getElementById("hintBtn");
 const submitGuessBtn = document.getElementById("submitGuessBtn");
 const nextRoundBtn = document.getElementById("nextRoundBtn");
 const restartGameBtn = document.getElementById("restartGameBtn");
+const resetHighScoreBtn = document.getElementById("resetHighScoreBtn");
 
 displayCurrentRound();
 
@@ -298,13 +301,14 @@ function restartGame() {
 
 function updateScoreDisplay() {
     scoreDisplay.textContent = `Total Score: ${totalScore}`;
-    highScoreDisplay.textContent = `High Score: ${highScore}`;
+    highScoreDisplay.textContent = 
+        `High Score (${capitalizeFirstLetter(selectedDifficulty)}): ${highScore}`;
 }
 
 function updateHighScore() {
     if (totalScore > highScore) {
         highScore = totalScore;
-        localStorage.setItem("landmarkLocatorHighScore", highScore);
+        localStorage.setItem(getHighScoreKey(), highScore);
         return true;
     }
 
@@ -360,9 +364,36 @@ function updateTimerDisplay() {
     timerDisplay.textContent = `Time Left: ${timeLeft}s`;
 }
 
-difficultySelect.addEventListener("change", function() {
+difficultySelect.addEventListener("change", function () {
     selectedDifficulty = difficultySelect.value;
     timeLimit = difficultySettings[selectedDifficulty];
+    highScore = loadHighScore();
 
     restartGame();
 });
+
+resetHighScoreBtn.addEventListener("click", function () {
+    resetHighScore();
+});
+
+function getHighScoreKey() {
+    return `landmarkLocatorHighScore_${selectedDifficulty}`;
+}
+
+function loadHighScore() {
+    return Number(localStorage.getItem(getHighScoreKey())) || 0;
+}
+
+function resetHighScore() {
+    localStorage.removeItem(getHighScoreKey());
+    highScore = 0;
+    updateScoreDisplay();
+
+    resultMessage.textContent = 
+        `${capitalizeFirstLetter(selectedDifficulty)} high score has been reset.`;
+}
+
+function capitalizeFirstLetter(word) {
+    return word.charAt(0).toUpperCase() + word.slice(1);
+}
+
