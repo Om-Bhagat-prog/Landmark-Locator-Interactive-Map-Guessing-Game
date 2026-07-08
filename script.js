@@ -42,6 +42,12 @@ const places = [
     }
 ];
 
+const difficultySettings = {
+    easy: 45,
+    normal: 30,
+    hard: 15
+};
+
 let currentRoundIndex = 0;
 let totalScore = 0;
 let highScore = Number(localStorage.getItem("landmarkLocatorHighScore")) || 0;
@@ -51,13 +57,16 @@ let resultLine = null;
 let userGuess = null;
 let roundSubmitted = false;
 let hintUsed = false;
-let timeLeft = 30;
+let selectedDifficulty = "normal";
+let timeLimit = difficultySettings[selectedDifficulty];
+let timeLeft = timeLimit;
 let timerInterval = null;
 
 const roundTitle = document.getElementById("roundTitle");
 const targetPlace = document.getElementById("targetPlace");
 const scoreDisplay = document.getElementById("scoreDisplay");
 const highScoreDisplay = document.getElementById("highScoreDisplay");
+const difficultySelect = document.getElementById("difficultySelect");
 const timerDisplay = document.getElementById("timerDisplay");
 const resultMessage = document.getElementById("resultMessage");
 const factMessage = document.getElementById("factMessage");
@@ -145,6 +154,7 @@ submitGuessBtn.addEventListener("click", function() {
     roundSubmitted = true;
     hintBtn.disabled = true;
     submitGuessBtn.disabled = true;
+    difficultySelect.disabled = true;
 });
 
 function calculateDistanceKm(lat1, lng1, lat2, lng2) {
@@ -197,6 +207,7 @@ nextRoundBtn.addEventListener("click", function() {
 function displayCurrentRound() {
     const currentPlace = places[currentRoundIndex];
 
+    difficultySelect.disabled = currentRoundIndex > 0;
     roundTitle.textContent =  `Round ${currentRoundIndex + 1} of ${places.length}`;
     targetPlace.textContent = currentPlace.name;
     updateScoreDisplay();
@@ -238,6 +249,7 @@ function endGame() {
     targetPlace.textContent = "All landmarks completed.";
     const isNewHighScore = updateHighScore();
     updateScoreDisplay();
+    difficultySelect.disabled = false;
 
     resultMessage.textContent = 
         `Final Score: ${totalScore} / ${places.length * 1000}.`;
@@ -279,6 +291,7 @@ function restartGame() {
     userGuess = null;
     roundSubmitted = false;
     hintUsed = false;
+    difficultySelect.disabled = false;
 
     displayCurrentRound();
 }
@@ -316,12 +329,13 @@ function handleTimeUp() {
     roundSubmitted = true;
     hintBtn.disabled = true;
     submitGuessBtn.disabled = true;
+    difficultySelect.disabled = true;
 }
 
 function startTimer() {
     stopTimer();
 
-    timeLeft = 30;
+    timeLeft = timeLimit;
     updateTimerDisplay();
 
     timerInterval = setInterval(function () {
@@ -346,3 +360,9 @@ function updateTimerDisplay() {
     timerDisplay.textContent = `Time Left: ${timeLeft}s`;
 }
 
+difficultySelect.addEventListener("change", function() {
+    selectedDifficulty = difficultySelect.value;
+    timeLimit = difficultySettings[selectedDifficulty];
+
+    restartGame();
+});

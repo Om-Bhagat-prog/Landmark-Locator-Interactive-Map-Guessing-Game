@@ -69,7 +69,7 @@ The fourth commit focused on improving the learning experience and game flow.
 
 ## Fifth Commit Progress
 
-the Fifth hour focused on saving player progress and improving score feedback.
+the fifth commit focused on saving player progress and improving score feedback.
 
 ## Fifth Commit Built
 
@@ -93,12 +93,28 @@ the Fifth hour focused on saving player progress and improving score feedback.
 - Gave 0 points for timed-out rounds
 - Stopped the timer at game over restart
 
+## Seventh Commit Progress
+
+The seventh commit focused on adding difficulty levels.
+
+## Seventh Hour Built
+
+- Added Easy, Normal, and Hard difficulty options
+- Set Easy mode to 45 seconds per round
+- Set Normal mode to 30 seconds per round
+- Set Hard mode to 15 seconds per round
+- Connected the difficulty dropdown to the timer
+- Restarted the game when the difficulty changes
+- Disabled difficulty changes during active gameplay
+- Re-enabled difficulty selection after restart or game over
+
 ## Current Features
+
 - Interactive world map
 - Click-to-guess gameplay
 - Multiple landmark rounds
 - Dynamic round number
-- Dunamic target landmark
+- Dynamic target landmark
 - User guess marker
 - Correct answer marker
 - Visual line between the guess and correct location
@@ -107,8 +123,9 @@ the Fifth hour focused on saving player progress and improving score feedback.
 - Total score tracking
 - High score saving
 - Browser localStorage support
-- 30-second round timer
+- Timed rounds
 - Timeout handling
+- Diffculty levels
 - Hint system
 - Hint score penalty
 - Landmark facts
@@ -132,9 +149,9 @@ the Fifth hour focused on saving player progress and improving score feedback.
 ## Future Improvements
 
 - Add more landmarks
-- Add difficulty levels
-- Add timer settings by difficulty
+- Add category selection
 - Add high score reset button
+- Add separate high scores for each difficulty
 - Add better marker colors for guess and answer
 - Add mobile responsive improvements
 - Add categories such as World, USA, India, and Wonders
