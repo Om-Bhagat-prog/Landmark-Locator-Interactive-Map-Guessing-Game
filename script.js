@@ -68,6 +68,7 @@ let resultLine = null;
 let userGuess = null;
 let roundSubmitted = false;
 let hintUsed = false;
+let gameStarted = false;
 
 let timeLeft = timeLimit;
 let timerInterval = null;
@@ -79,8 +80,10 @@ const highScoreDisplay = document.getElementById("highScoreDisplay");
 const difficultySelect = document.getElementById("difficultySelect");
 const categorySelect = document.getElementById("categorySelect");
 const settingsSummary = document.getElementById("settingsSummary");
+const startMessage = document.getElementById("startMessage");
 const timerDisplay = document.getElementById("timerDisplay");
 const resultMessage = document.getElementById("resultMessage");
+const startGameBtn = document.getElementById("startGameBtn");
 const factMessage = document.getElementById("factMessage");
 const hintBtn = document.getElementById("hintBtn");
 const submitGuessBtn = document.getElementById("submitGuessBtn");
@@ -88,25 +91,30 @@ const nextRoundBtn = document.getElementById("nextRoundBtn");
 const restartGameBtn = document.getElementById("restartGameBtn");
 const resetHighScoreBtn = document.getElementById("resetHighScoreBtn");
 
-displayCurrentRound();
+prepareStartScreen();
 
 map.on("click", function (event) {
-    if (roundSubmitted ===  true) {
+    if (gameStarted === false) {
+        resultMessage.textContent = "Click Start Game before making a guess.";
+        return;
+    }
+
+    if (roundSubmitted === true) {
         resultMessage.textContent = "You already submitted this round. Click Next Round to continue.";
         return;
     }
 
     userGuess = event.latlng;
 
-    if(userMarker !== null) {
+    if (userMarker !== null) {
         map.removeLayer(userMarker);
     }
 
     userMarker = L.marker([userGuess.lat, userGuess.lng])
-    .addTo(map)
-    .bindPopup("Your Guess");
+        .addTo(map)
+        .bindPopup("Your Guess");
 
-    resultMessage.textContent = "Guess selected. Click Submit Guess to check.";
+        resultMessage.textContent = "Guess selected. Click Submit Guess to check.";
 });
 
 submitGuessBtn.addEventListener("click", function() {
@@ -154,7 +162,7 @@ submitGuessBtn.addEventListener("click", function() {
     
     totalScore = totalScore + score;
     updateScoreDisplay();
-    updatesSettingsSummary();
+    updateSettingsSummary();
 
     resultMessage.textContent = 
         `You were ${distanceKm.toFixed(1)} km away. Score: ${score} / 1000.`;
@@ -216,7 +224,7 @@ nextRoundBtn.addEventListener("click", function() {
     }
 
     resetMapMarkers();
-    displayCurrentRound();
+     displayCurrentRound();
 });
 
 function displayCurrentRound() {
@@ -313,7 +321,7 @@ function restartGame() {
     difficultySelect.disabled = false;
     categorySelect.disabled = false;
 
-    displayCurrentRound();
+    prepareStartScreen();
 }
 
 function updateScoreDisplay() {
@@ -344,13 +352,15 @@ function handleTimeUp() {
         .bindPopup(correctPlace.name)
         .openPopup();
 
-    resultMessage.textContent = "Time is up. You scored 0 points for this round.";
-    factMessage.textContent = `Fact: ${correctPlace.fact}`;
+        resultMessage.textContent = "Time is up. You scored 0 points for this round.";
+        factMessage.textContent = `Fact: ${correctPlace.fact}`;
 
-    roundSubmitted = true;
-    hintBtn.disabled = true;
-    submitGuessBtn.disabled = true;
-    categorySelect.disabled = true;
+        roundSubmitted = true;
+        hintBtn.disabled = true;
+        submitGuessBtn.disabled = true;
+        nextRoundBtn.disabled = false;
+        difficultySelect.disabled = true;
+        categorySelect.disabled = true;
 }
 
 function startTimer() {
@@ -381,13 +391,13 @@ function updateTimerDisplay() {
     timerDisplay.textContent = `Time Left: ${timeLeft}s`;
 }
 
-difficultySelect.addEventListener("change", function () {
+difficultySelect.addEventListener("change", function() {
     selectedDifficulty = difficultySelect.value;
     timeLimit = difficultySettings[selectedDifficulty];
     highScore = loadHighScore();
 
-    restartGame();
-});
+    prepareStartScreen();
+})
 
 resetHighScoreBtn.addEventListener("click", function () {
     resetHighScore();
@@ -419,7 +429,7 @@ categorySelect.addEventListener("change", function () {
     currentPlaces = getShuffledPlacesForCategory();
     highScore = loadHighScore();
 
-    restartGame();
+    prepareStartScreen();
 });
 
 function getPlacesForCategory() {
@@ -475,3 +485,62 @@ function updateSettingsSummary() {
         `Mode: ${capitalizeFirstLetter(selectedDifficulty)} / ${getCategoryName()}`;
 }
 
+startGameBtn.addEventListener("click", function() {
+    startGame();
+});
+
+function prepareStartScreen() {
+    gameStarted = false;
+    stopTimer();
+    resetMapMarkers();
+
+    currentPlaces = getShuffledPlacesForCategory();
+    currentRoundIndex = 0;
+    totalScore = 0;
+    userGuess = null;
+    roundSubmitted = false;
+    hintUsed = false;
+
+    highScore = loadHighScore();
+
+    roundTitle.textContent = "Ready to Play";
+    targetPlace.textContent = "Game not started yet";
+    timerDisplay.textContent = `Time Left: ${timeLimit}s`;
+    resultMessage.textContent = "Choose your settings, then click Start Game.";
+    factMessage.textContent = "";
+    startMessage.textContent = "Choose your settings, then click Start Game.";
+    
+    difficultySelect.disabled = false;
+    categorySelect.disabled = false;
+
+    startGameBtn.disabled = false;
+    hintBtn.disabled = true;
+    submitGuessBtn.disabled = true;
+    nextRoundBtn.disabled = true;
+    restartGameBtn.disabled = false;
+    resetHighScoreBtn.disabled = false;
+
+    document.querySelector(".start-box").style.display = "block";
+
+    updateScoreDisplay();
+    updateSettingsSummary();
+}
+
+function startGame() {
+    gameStarted = true;
+
+    currentPlaces = getShuffledPlacesForCategory();
+    currentRoundIndex = 0;
+    totalScore = 0;
+    userGuess = null;
+    roundSubmitted = false;
+    hintUsed = false;
+
+    difficultySelect.disabled = true;
+    categorySelect.disabled = true;
+    startGameBtn.disabled = true;
+
+    document.querySelector(".start-box").style.display = "none";
+
+    displayCurrentRound();
+}
