@@ -290,6 +290,13 @@ submitGuessBtn.addEventListener("click", function() {
         .bindPopup(correctPlace.name)
         .openPopup();
 
+        fitMapToResult(
+            userGuess.lat,
+            userGuess.lng,
+            correctPlace.lat,
+            correctPlace.lng
+        );
+
     const distanceKm = calculateDistanceKm(
         userGuess.lat,
         userGuess.lng,
@@ -388,6 +395,9 @@ function displayCurrentRound() {
     hintBtn.disabled = false;
     submitGuessBtn.disabled = false;
     nextRoundBtn.disabled = false;
+
+    map.setView([20, 0], 2);
+    
     startTimer();
 }
 
@@ -496,6 +506,8 @@ function handleTimeUp() {
         .addTo(map)
         .bindPopup(correctPlace.name)
         .openPopup();
+
+    map.setView([correctPlace.lat, correctPlace.lng], 5);
 
         resultMessage.textContent = "Time is up. You scored 0 points for this round.";
         factMessage.textContent = `Fact: ${correctPlace.fact}`;
@@ -689,3 +701,16 @@ function startGame() {
 
     displayCurrentRound();
 }
+
+function fitMapToResult(userLat, userLng, correctLat, correctLng) {
+    const resultBounds = L.latLngBounds([
+        [userLat, userLng],
+        [correctLat, correctLng]
+    ]);
+
+    map.fitBounds(resultBounds, {
+        padding: [60, 60],
+        maxZoom: 6
+    });
+}
+

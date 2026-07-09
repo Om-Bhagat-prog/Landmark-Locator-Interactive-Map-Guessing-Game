@@ -169,6 +169,65 @@ The eleventh commit focused on adding a proper start screen and fixing the game 
 - Locked difficulty and category settings during active gameplay
 Improved the transition from setup mode into the first round
 
+## Twelfth Commit Progress
+
+The twelfth commit focused on cleaning up the start screen and timeout flow.
+
+## Twelfth Commit Built
+
+- Fixed the Start Game button diabled-state typo
+- Hid the Start Game box during active gameplay
+- Showed the Start Game box again on the setup screen
+- Improved the visual difference between setup mode and active game mode
+- Improved timeout behavior
+- Allowed players to continue after time runs out
+- Kept difficulty and category locked during timed-out rounds
+- Made the game state more consistent between start, active round, timeout, and restart
+
+## Thirteenth Commit Progress
+
+The thirteenth commit focused on expanding the landmark data and improving category gameplay.
+
+## Thirteenth Commit Built
+
+- Added more landmarks to the game
+- Added more USA landmarks
+- Add more India landmarks
+- Add more World Wonders landmarks
+- Added coordinates for each new landmark
+- Added hints for each new landmark
+- Added facts for each new landmark
+- Improved replay value by reducing repeated rounds
+- Made category-based gameplay feel more complete
+
+## Fourteenth Commit Progress
+
+The fourteenth commit focused on improving map feedback and visual clarity.
+
+## Fourteenth Commit Built
+
+- Added a blue custom marker for the player's guess
+- Added a green custom marker for the corect landmark location
+- Updated guess marker creation to use the custom guess marker
+- Updated correct marker creation to use the custom answer marker
+- Updated timeout answer marker to use the correct marker color
+- Improved the result line between the guess and the correct answer
+- Made the map results easier to understand visually
+Fixed marker icon syntax so the map loads correctly
+
+## Fifteenth Commit Progress
+
+The fifteenth commit focused on improving the map result view.
+
+## Fifteenth Commit Built
+
+- Added automatic map zoom after a submitted guess
+- Added a helper function to fit the map around both result markers
+- Made the map show both the guess marker and correct marker after scoring
+- Reset the map to the world view at the start of each round
+- Centered the map on the correct landmark when time runs out
+- Improved visual feedback after guesses and timed-out rounds
+
 ## Current Features
 
 - Interactive world map
@@ -178,11 +237,16 @@ Improved the transition from setup mode into the first round
 - Multiple landmark rounds
 - Randomized landmark order
 - Category-based landmark selection
+- Expanded landmark list
+- USA, India, and World Wonders categories
 - Dynamic round number
 - Dynamic target landmark
-- User guess marker
-- Correct answer marker
-- Visual line between the guess and correct location
+- Blue marker for player guess
+- Green marker for correct answer
+- Visual result line between the guess and correct location
+- Automatic map zoom after submitting a guess
+- Map reset to world view at the start of each round
+- Correct-location focus when time runs out
 - Distance-based feedback
 - Score out of 1000 for each round
 - Total score tracking
@@ -198,6 +262,7 @@ Improved the transition from setup mode into the first round
 - Final game-over message
 - Restart game option
 - Reset high score option
+- Cleaner setup and active-game states
 - Basic responsive layout
 
 ## Tools Used
@@ -216,9 +281,7 @@ Improved the transition from setup mode into the first round
 
 ## Future Improvements
 
-- Add more landmarks
 - Add more categories such as Europe, Asia, South America, and Monuments
-- Add better marker colors for guess and answer
 - Add mobile responsive improvements
 - Add sound effects
 - Add animations
