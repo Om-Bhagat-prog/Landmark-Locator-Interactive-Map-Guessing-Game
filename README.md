@@ -288,6 +288,21 @@ The eighteenth commit focused on fixing the game status element lookup and stabi
 - Tested the main game states after the fix
 - Improved overall project stability
 
+## Nineteenth Commit Progress
+
+The nineteenth commit focused on improving the mobile responsive layout.
+
+## Nineteenth Commit Built
+
+- Improved the layout for tablet screens
+- Improved the layout for phone screens
+- Stacked the game panel and map on smaller screens
+- Adjusted the map height for different screen widths
+- Reduced header text size on smaller screens
+- Improved button and dropdown sizing for touch screens
+- Improved spacing inside the game panel
+- Made the project more usable on mobile devices
+
 ## Current Features
 
 - Interactive world map
@@ -327,8 +342,8 @@ The eighteenth commit focused on fixing the game status element lookup and stabi
 - Cleaner setup and active-game states
 - Cleaner round button behavior
 - Stable Start Game flow
-- Basic responsive layout
-
+- Responsive tablet layout
+- Responsive mobile layout
 
 ## Tools Used
 
@@ -347,7 +362,6 @@ The eighteenth commit focused on fixing the game status element lookup and stabi
 ## Future Improvements
 
 - Add more categories such as Europe, Asia, South America, and Monuments
-- Add mobile responsive improvements
 - Add sound effects
 - Add animations
 - Add leaderboard-style score history

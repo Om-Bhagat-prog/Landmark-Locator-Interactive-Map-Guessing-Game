@@ -210,6 +210,10 @@ button:disabled {
     cursor: not-allowed;
 }
 
+button:disabled:hover {
+    background: #cbd5e1;
+}
+
 #map {
     height: 600px;
     border-radius: 14px;
@@ -217,12 +221,85 @@ button:disabled {
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
 }
 
-@media (max-width: 800px) {
+@media (max-width: 900px) {
     .game-container {
         grid-template-columns: 1fr;
+        width: min(700px, 94%);
+        gap: 18px;
+    }
+
+    .game-panel {
+        padding: 20px;
     }
 
     #map {
         height: 500px;
+    }
+}
+
+@media (max-width: 600px) {
+    .app-header {
+        padding: 20px 14px;
+    }
+
+    .app-header h1 {
+        font-size: 2rem;
+    }
+
+    .app-header p {
+        font-size: 0.95rem;
+    }
+
+    .game-container {
+        width: 94%;
+        margin: 18px auto;
+    }
+
+    .game-panel {
+        padding: 18px;
+        border-radius: 12px;
+    }
+
+    .game-panel h2 {
+        font-size: 1.4rem;
+        margin-bottom: 16px;
+    }
+
+    #targetPlace {
+        font-size: 1.1rem;
+    }
+
+    button,
+    #difficultySelect,
+    #categorySelect {
+        font-size: 0.95rem;
+        padding: 11px;
+    }
+
+    #map {
+        height: 420px;
+        border-radius: 12px;
+    }
+
+    #resultMessage,
+    #factMessage {
+        font-size: 0.95rem;
+    }
+}
+
+@media (max-width: 400px) {
+    .app-header h1 {
+        font-size: 1.7rem;
+    }
+
+    #map {
+        height: 360px;
+    }
+
+    .score-box,
+    #settingsSummary,
+    #gameStatus,
+    .start-box {
+        padding: 10px;
     }
 }
