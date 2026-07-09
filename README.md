@@ -228,6 +228,19 @@ The fifteenth commit focused on improving the map result view.
 - Centered the map on the correct landmark when time runs out
 - Improved visual feedback after guesses and timed-out rounds
 
+## Sixteenth Commit Progress 
+
+The sixteenth commit focused on cleaning up round button states.
+
+## Sixteenth Commit Built
+
+- Disabled the Next Round button during active guessing
+- Enabled the Next Round button only after  asubmitted guess
+- Kept the Next Round button available after a timeout
+- Improved control flow during each round
+- Made the game buttons match the actual game state more clearly
+- Reduced cofusing button behavior during active gameplay
+
 ## Current Features
 
 - Interactive world map
@@ -263,6 +276,7 @@ The fifteenth commit focused on improving the map result view.
 - Restart game option
 - Reset high score option
 - Cleaner setup and active-game states
+- Cleaner round button behavior
 - Basic responsive layout
 
 ## Tools Used

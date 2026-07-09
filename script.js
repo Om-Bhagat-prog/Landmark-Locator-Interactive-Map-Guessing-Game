@@ -326,6 +326,7 @@ submitGuessBtn.addEventListener("click", function() {
     roundSubmitted = true;
     hintBtn.disabled = true;
     submitGuessBtn.disabled = true;
+    nextRoundBtn.disabled = false;
     difficultySelect.disabled = true;
     categorySelect.disabled = true;
 });
@@ -380,7 +381,9 @@ nextRoundBtn.addEventListener("click", function() {
 function displayCurrentRound() {
     const currentPlace = currentPlaces[currentRoundIndex];
 
-    difficultySelect.disabled = currentRoundIndex > 0;
+    difficultySelect.disabled = true;
+    categorySelect.disabled = true;
+    
     roundTitle.textContent =  `Round ${currentRoundIndex + 1} of ${currentPlaces.length}`;
     targetPlace.textContent = currentPlace.name;
     updateScoreDisplay();
@@ -394,7 +397,7 @@ function displayCurrentRound() {
 
     hintBtn.disabled = false;
     submitGuessBtn.disabled = false;
-    nextRoundBtn.disabled = false;
+    nextRoundBtn.disabled = true;
 
     map.setView([20, 0], 2);
     
