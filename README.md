@@ -241,12 +241,22 @@ The sixteenth commit focused on cleaning up round button states.
 - Made the game buttons match the actual game state more clearly
 - Reduced cofusing button behavior during active gameplay
 
+## Seventeenth Commit Progress
+
+The seventeenth commit focused on adding clearer game status feedback
+
+## Seventeenth Commit Built
+
+- Added a visible game status message to the control panel
+- Showed setup status before the game starts
+- Showed active-round status while the player is guessing
+- Showed submitted-result status after the player submits a guess
+- Showed timeout status when time runs out
+- Showed game-over status after all rounds are complete
+- Made the game easier to understand for the player
+
 ## Current Features
 
-- Interactive world map
-- Start screen
-- Start Game button
-- Click-to-guess gameplay
 - Multiple landmark rounds
 - Randomized landmark order
 - Category-based landmark selection
@@ -268,7 +278,9 @@ The sixteenth commit focused on cleaning up round button states.
 - Timed rounds
 - Timeout handling
 - Difficulty levels
+- Locked settings during active rounds
 - Current mode summary
+- Game status display
 - Hint system
 - Hint score penalty
 - Landmark facts

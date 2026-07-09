@@ -95,6 +95,16 @@ body {
     text-align: center;
 }
 
+#gameStatus {
+    margin-bottom: 16px;
+    padding: 10px;
+    background: #fef3c7;
+    border-radius: 8px;
+    font-weight: bold;
+    color: #92400e;
+    text-align: center;
+}
+
 .start-box {
     margin-bottom: 16px;
     padding: 12px;

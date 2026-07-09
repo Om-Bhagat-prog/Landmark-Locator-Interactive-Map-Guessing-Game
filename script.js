@@ -218,6 +218,7 @@ const highScoreDisplay = document.getElementById("highScoreDisplay");
 const difficultySelect = document.getElementById("difficultySelect");
 const categorySelect = document.getElementById("categorySelect");
 const settingsSummary = document.getElementById("settingsSummary");
+const gameStatus = document.getElementById("gameStatus");
 const startMessage = document.getElementById("startMessage");
 const timerDisplay = document.getElementById("timerDisplay");
 const resultMessage = document.getElementById("resultMessage");
@@ -324,6 +325,7 @@ submitGuessBtn.addEventListener("click", function() {
     factMessage.textContent = `Fact: ${correctPlace.fact}`;
 
     roundSubmitted = true;
+    updateGameStatus("Guess submitted - review the result.");
     hintBtn.disabled = true;
     submitGuessBtn.disabled = true;
     nextRoundBtn.disabled = false;
@@ -383,12 +385,13 @@ function displayCurrentRound() {
 
     difficultySelect.disabled = true;
     categorySelect.disabled = true;
-    
+
     roundTitle.textContent =  `Round ${currentRoundIndex + 1} of ${currentPlaces.length}`;
     targetPlace.textContent = currentPlace.name;
     updateScoreDisplay();
     updateSettingsSummary();
     resultMessage.textContent = "Make your guess by clicking on the map.";
+    updateGameStatus("Round active - make your guess.");
     factMessage.textContent = "";
 
     userGuess = null;
@@ -426,6 +429,7 @@ function endGame() {
     resetMapMarkers();
     timerDisplay.textContent = "Time Left: 0s";
     roundTitle.textContent = "Game Over";
+    updateGameStatus("Game complete - restart to play again.");
     targetPlace.textContent = "All landmarks completed.";
     const isNewHighScore = updateHighScore();
     updateScoreDisplay();
@@ -516,6 +520,7 @@ function handleTimeUp() {
         factMessage.textContent = `Fact: ${correctPlace.fact}`;
 
         roundSubmitted = true;
+        updateGameStatus("Time is up - continue to the next round.");
         hintBtn.disabled = true;
         submitGuessBtn.disabled = true;
         nextRoundBtn.disabled = false;
@@ -682,6 +687,8 @@ function prepareStartScreen() {
 
     document.querySelector(".start-box").style.display = "block";
 
+    updateGameStatus("Choose settings and start the game.");
+
     updateScoreDisplay();
     updateSettingsSummary();
 }
@@ -717,3 +724,6 @@ function fitMapToResult(userLat, userLng, correctLat, correctLng) {
     });
 }
 
+function updateGameStatus(message) {
+    gameStatus.textContent = `Status: ${message}`;
+}
