@@ -6,6 +6,39 @@ Landmark Locator is an interactive map-based travel game where users guess the l
 
 This project uses an interactive map to challenge users to find famous landmarks. The player clicks on the map to make a guess, submits the guess, and then sees the correct location. The game calculates the distance between the player's guess and the real landmark location, then gives a score based on accuracy.
 
+## How to Play
+
+1. Choose a difficulty level.
+2. Choose a landmark category.
+3. Click Start Game.
+4. Read the landmark name.
+5. Click on the map where you think the lndmark is located.
+6. Click Submit Guess.
+7. Review your distance, score, correct answer, and landmark fact.
+8. Click Next Round to continue.
+9. Try to get the highest score possible.
+
+## Difficulty Levels
+
+- Easy: 45 seconds per round
+- Normal: 30 seconds per round
+- Hard: 15 seconds per round
+
+## Categories
+
+- All Landmarks
+- World Wonders
+- USA
+- India
+
+## Scoring
+
+Each round is scored out of 1000 points. The closer the player's guess is to the real landmark location, the higher the score.
+
+Using a hint subtracts 100 points from that round's score.
+
+If the timer reaches 0 before the playersubmits a guess, the player scores 0 points for that round.
+
 ## First Commit Progress
 
 The first commit focused on setting up the project structure and building the basic interactive map.
@@ -69,7 +102,7 @@ The fourth commit focused on improving the learning experience and game flow.
 
 ## Fifth Commit Progress
 
-the fifth commit focused on saving player progress and improving score feedback.
+The fifth commit focused on saving player progress and improving score feedback.
 
 ## Fifth Commit Built
 
@@ -115,7 +148,7 @@ The eighth commit focused on improving the high score system.
 ## Eighth Commit Built
 
 - Added separate high scores for Easy, Normal, and Hard modes
-- Saved each difficulty high score with a different LocalStorage key
+- Saved each difficulty high score with a different localStorage key
 - Loaded the correct high score when difficulty changes
 - Updated the high score display to show the selected difficulty
 - Added a Reset High Score button
@@ -128,12 +161,12 @@ The ninth commit focused on adding landmark categories.
 ## Ninth Commit Built
 
 - Added category selection
-- Added All landmarks, World Wonders,, USA, and India categories
+- Added All Landmarks, World Wonders,, USA, and India categories
 - Added category values to each landmark
 - Added more landmarks to support category gameplay
 - Filtered the round list based on the selected category
 - Updated round count based on the selected category
-- Saved high scores separatley by difficulty and category
+- Saved high scores separately by difficulty and category
 - Locked category changes during active gameplay
 - Re-enabled category selection after restart or game over
 
@@ -146,7 +179,7 @@ The tenth commit focused on improving replayability and game polish.
 - Added randomized landmark order
 - Shuffled the selected category at the start of each game
 - Shuffled landmarks again when Restart Game is clicked
-- Kept category filtereing working with randomized order
+- Kept category filtering working with randomized order
 - Added a mode summary showing the current difficulty and category
 - Improved the overall game flow and replay value
 
@@ -161,7 +194,7 @@ The eleventh commit focused on adding a proper start screen and fixing the game 
 - Added Start Game functionality
 - Prevented users from guessing before the game starts
 - Added a clean game initialization flow
-- Added the missing PrepareStartScreen() function
+- Added the missing prepareStartScreen() function
 - Added the missing startGame() function
 - Fixed the settings summary function typo
 - Fixed the Start Game button hover selector in CSS
@@ -175,7 +208,7 @@ The twelfth commit focused on cleaning up the start screen and timeout flow.
 
 ## Twelfth Commit Built
 
-- Fixed the Start Game button diabled-state typo
+- Fixed the Start Game button disabled-state typo
 - Hid the Start Game box during active gameplay
 - Showed the Start Game box again on the setup screen
 - Improved the visual difference between setup mode and active game mode
@@ -207,7 +240,7 @@ The fourteenth commit focused on improving map feedback and visual clarity.
 ## Fourteenth Commit Built
 
 - Added a blue custom marker for the player's guess
-- Added a green custom marker for the corect landmark location
+- Added a green custom marker for the correct landmark location
 - Updated guess marker creation to use the custom guess marker
 - Updated correct marker creation to use the custom answer marker
 - Updated timeout answer marker to use the correct marker color
@@ -235,11 +268,11 @@ The sixteenth commit focused on cleaning up round button states.
 ## Sixteenth Commit Built
 
 - Disabled the Next Round button during active guessing
-- Enabled the Next Round button only after  asubmitted guess
+- Enabled the Next Round button only after  a submitted guess
 - Kept the Next Round button available after a timeout
 - Improved control flow during each round
 - Made the game buttons match the actual game state more clearly
-- Reduced cofusing button behavior during active gameplay
+- Reduced confusing button behavior during active gameplay
 
 ## Seventeenth Commit Progress
 
@@ -272,22 +305,6 @@ The eighteenth commit focused on fixing the game status element lookup and stabi
 - Tested the main game states after the fix
 - Improved overall project stability
 
-## Eighteenth Commit Progress
-
-The eighteenth commit focused on fixing the game status element lookup and stabilizing the game flow.
-
-## Eighteenth Commit Built
-
-- Fixed the incorrect game status element lookup method
-- Restored Start Game button functionality
-- Confirmed the game status changes during active rounds
-- Confirmed the status changes during active rounds
-- Confirmed the status changes after submitted guesses
-- Confirmed the status changes after timeout
-- Confirmed the status changes at game over
-- Tested the main game states after the fix
-- Improved overall project stability
-
 ## Nineteenth Commit Progress
 
 The nineteenth commit focused on improving the mobile responsive layout.
@@ -302,6 +319,26 @@ The nineteenth commit focused on improving the mobile responsive layout.
 - Improved button and dropdown sizing for touch screens
 - Improved spacing inside the game panel
 - Made the project more usable on mobile devices
+
+## Twentieth Commit Progress
+
+The twentieth commit focused on final gameplay testing and cleanup.
+
+## Twentieth Commit Built
+
+- Tested the full game flow from setup to game over
+- Tested difficulty selection
+- Tested category selection
+- Tested hint behavior and hint penalty
+- Tested score calculation
+- Tested timeout behavior
+- Tested high score saving
+- Tested reset high score behavior
+- Tested restart behavior
+- Cleaned up spelling issues in landmark hints and facts
+- Corrected one landmark coordinate
+- Checked that there were no major console errors
+- Made the project more stable and presentation-ready
 
 ## Current Features
 
@@ -344,6 +381,9 @@ The nineteenth commit focused on improving the mobile responsive layout.
 - Stable Start Game flow
 - Responsive tablet layout
 - Responsive mobile layout
+- Cleaned landmark facts and hints
+- Tested final gameplay flow
+- Presentation-ready project documentation
 
 ## Tools Used
 
@@ -357,7 +397,16 @@ The nineteenth commit focused on improving the mobile responsive layout.
 - clearInterval
 - VS Code
 - Git
-- Github
+- GitHub
+
+## Project Structure
+
+```text
+landmark-locator/
+├── index.html
+├── style.css
+├── script.js
+└── README.md
 
 ## Future Improvements
 

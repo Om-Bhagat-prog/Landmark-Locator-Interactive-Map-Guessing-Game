@@ -1,7 +1,17 @@
-const map = L.map("map").setView([20, 0], 2);
+const worldBounds = L.latLngBounds(
+    L.latLng(-85, -180),
+    L.latLng(85, 180)
+);
+
+const map = L.map("map", {
+    minZoom: 2,
+    maxBounds: worldBounds,
+    maxBoundsViscosity: 1.0
+}).setView([20, 0], 2);
 
 L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-    attribution: "&copy; OpenStreetMap contributors"
+    attribution: "&copy; OpenStreetMap contributors",
+    noWrap: true
 }).addTo(map);
 
 const guessIcon = L.icon({
@@ -76,7 +86,7 @@ const allPlaces = [
         lat: 37.8199,
         lng: -122.4783,
         category: "usa",
-        hint: "This famous orange bridge is in San Francisco",
+        hint: "This famous orange bridge is in San Francisco.",
         fact: "The Golden Gate Bridge opened in 1937 and is one of the most recognized bridges in the world."
     },
     {
@@ -109,7 +119,7 @@ const allPlaces = [
         lng: 77.2295,
         category: "india",
         hint: "This war memorial is located in New Delhi.",
-        fact: "India Gate was buit to honor Indian soldiers who died during World War I."
+        fact: "India Gate was built to honor Indian soldiers who died during World War I."
     },
     {
         name: "Red Fort, India",
@@ -117,7 +127,7 @@ const allPlaces = [
         lng: 77.2410,
         category: "india",
         hint: "This red sandstone fort is in Old Delhi.",
-        fact: "The Red Fort was built by Mughal emperor Shah Jahan and is a UNESCO World Heritage Site"
+        fact: "The Red Fort was built by Mughal emperor Shah Jahan and is a UNESCO World Heritage Site."
     },
     {
         name: "Hawa Mahal, India",
@@ -140,7 +150,7 @@ const allPlaces = [
         lat: 12.3052,
         lng: 76.6552,
         category: "india",
-        hint: "This royal palace is in Karnataka",
+        hint: "This royal palace is in Karnataka.",
         fact: "Mysore Palace is one of the most visited tourist attractions in India."
     },
     {
@@ -154,9 +164,9 @@ const allPlaces = [
     {
         name: "Christ the Redeemer, Brazil",
         lat: -22.9519,
-        lng: -42.2105,
+        lng: -43.2105,
         category: "world",
-        hint: "This large statue overlooks Rio de Janerio",
+        hint: "This large statue overlooks Rio de Janeiro.",
         fact: "Christ the Redeemer is one of the New Seven Wonders of the World."
     },
     {
@@ -181,7 +191,7 @@ const allPlaces = [
         lng: 151.2153,
         category: "world",
         hint: "This building has a sail-like roof and is in Australia.",
-        fact: "The Sydney OPera House opened in 1973 and is one of the most famous performing arts centers in the world."
+        fact: "The Sydney Opera House opened in 1973 and is one of the most famous performing arts centers in the world."
     }
 ];
 
@@ -720,10 +730,15 @@ function fitMapToResult(userLat, userLng, correctLat, correctLng) {
 
     map.fitBounds(resultBounds, {
         padding: [60, 60],
-        maxZoom: 6
+        maxZoom: 3
     });
-}
 
+    if (map.getZoom() < 2) {
+        map.setZoom(2);
+    }
+
+    map.panInsideBounds(worldBounds, { animate: false });
+}
 function updateGameStatus(message) {
     gameStatus.textContent = `Status: ${message}`;
 }
