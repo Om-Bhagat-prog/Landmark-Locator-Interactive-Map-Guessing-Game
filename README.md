@@ -255,8 +255,45 @@ The seventeenth commit focused on adding clearer game status feedback
 - Showed game-over status after all rounds are complete
 - Made the game easier to understand for the player
 
+
+## Eighteenth Commit Progress
+
+The eighteenth commit focused on fixing the game status element lookup and stabilizing the game flow.
+
+## Eighteenth Commit Built
+
+- Fixed the incorrect game status element lookup method
+- Restored Start Game button functionality
+- Confirmed the game status display works during setup
+- Confirmed the status changes during active rounds
+- Confirmed the status changes after submitted guesses
+- Confirmed the status changes after timeout
+- Confirmed the status changes at game over
+- Tested the main game states after the fix
+- Improved overall project stability
+
+## Eighteenth Commit Progress
+
+The eighteenth commit focused on fixing the game status element lookup and stabilizing the game flow.
+
+## Eighteenth Commit Built
+
+- Fixed the incorrect game status element lookup method
+- Restored Start Game button functionality
+- Confirmed the game status changes during active rounds
+- Confirmed the status changes during active rounds
+- Confirmed the status changes after submitted guesses
+- Confirmed the status changes after timeout
+- Confirmed the status changes at game over
+- Tested the main game states after the fix
+- Improved overall project stability
+
 ## Current Features
 
+- Interactive world map
+- Start screen
+- Start Game button
+- Click-to-guess gameplay
 - Multiple landmark rounds
 - Randomized landmark order
 - Category-based landmark selection
@@ -289,7 +326,9 @@ The seventeenth commit focused on adding clearer game status feedback
 - Reset high score option
 - Cleaner setup and active-game states
 - Cleaner round button behavior
+- Stable Start Game flow
 - Basic responsive layout
+
 
 ## Tools Used
 
